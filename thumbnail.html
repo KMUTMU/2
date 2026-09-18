@@ -13,65 +13,38 @@
     background:#0a1c14;
   }
 
-  /* ===== BACKGROUND CARD PHOTOS (all three, blended) ===== */
+  /* ===== BACKGROUND: Sissoko Prizm blended top ===== */
   .bg { position:absolute; inset:0; background-size:cover; background-position:center; }
-
-  /* Sissoko Prizm — smaller, upper-center, feathered into bg */
   .bg-prizm {
     background-image:url('s-l1600.jpg');
     background-position:center top;
-    background-size:auto 48%;            /* smaller player */
+    background-size:auto 44%;
     background-repeat:no-repeat;
     filter:grayscale(14%) contrast(1.05) brightness(0.62) saturate(1.05);
-    -webkit-mask-image: radial-gradient(52% 40% at 50% 22%, #000 0%, #000 40%, transparent 74%);
-            mask-image: radial-gradient(52% 40% at 50% 22%, #000 0%, #000 40%, transparent 74%);
-    opacity:0.85;
+    -webkit-mask-image: radial-gradient(50% 38% at 50% 20%, #000 0%, #000 40%, transparent 74%);
+            mask-image: radial-gradient(50% 38% at 50% 20%, #000 0%, #000 40%, transparent 74%);
+    opacity:0.82;
   }
-  /* faint vintage MATCH scene texture across the whole bg (very subtle) */
   .bg-match {
     background-image:url('1656900916111.jpg');
     background-position:38% 48%;
     background-size:130%;
     background-repeat:no-repeat;
     filter:sepia(0.9) contrast(1.1) brightness(0.9);
-    -webkit-mask-image: radial-gradient(120% 50% at 50% 100%, #000 0%, #000 20%, transparent 55%);
-            mask-image: radial-gradient(120% 50% at 50% 100%, #000 0%, #000 20%, transparent 55%);
-    opacity:0.28; mix-blend-mode:luminosity;
+    -webkit-mask-image: radial-gradient(120% 45% at 50% 100%, #000 0%, #000 16%, transparent 52%);
+            mask-image: radial-gradient(120% 45% at 50% 100%, #000 0%, #000 16%, transparent 52%);
+    opacity:0.22; mix-blend-mode:luminosity;
   }
-  .bg-portrait { display:none; }
-
-  /* ===== displayed vintage cards (crisp, like a collection) ===== */
-  .vcards { position:absolute; left:0; right:0; bottom:300px; display:flex; justify-content:center; align-items:center; pointer-events:none; }
-  .vcard { border:4px solid #efe3c6; border-radius:4px;
-    box-shadow:0 12px 32px rgba(0,0,0,0.75), 0 0 0 1px #9c7326;
-    filter:sepia(0.3) contrast(1.06) brightness(1.05);
-    background-repeat:no-repeat; }
-  /* MATCH slab 1755x1080: crop the dark card (x 29%..78%, y 22%..76%) */
-  .vcard.match {
-    width:300px; height:196px; transform:rotate(-5deg) translateX(36px); z-index:1;
-    background-image:url('1656900916111.jpg');
-    background-size:204% auto;
-    background-position:44% 40%;
-  }
-  /* PORTRAIT slab 1080x1713: crop the dark card (x 22%..78%, y 30%..78%) */
-  .vcard.portrait {
-    width:158px; height:250px; transform:rotate(5deg) translateX(-36px); z-index:2;
-    background-image:url('1656900919275.jpg');
-    background-size:178% auto;
-    background-position:50% 47%;
-  }
-  .vcards::after { content:""; position:absolute; inset:-30px;
-    background:radial-gradient(60% 90% at 50% 50%, rgba(217,182,78,0.16), transparent 70%); z-index:0; }
 
   /* ===== TONE OVERLAYS ===== */
   .tone-green { position:absolute; inset:0;
     background:
-      radial-gradient(90% 55% at 50% 30%, rgba(20,70,50,0.45), transparent 68%),
-      linear-gradient(180deg, rgba(6,20,14,0.45) 0%, rgba(6,20,14,0.2) 42%, rgba(4,14,9,0.55) 100%);
+      radial-gradient(90% 55% at 50% 26%, rgba(20,70,50,0.42), transparent 68%),
+      linear-gradient(180deg, rgba(6,20,14,0.42) 0%, rgba(6,20,14,0.18) 42%, rgba(4,14,9,0.5) 100%);
     mix-blend-mode:multiply; }
   .tone-dark { position:absolute; inset:0;
     background:
-      linear-gradient(90deg, rgba(4,14,9,0.9) 0%, rgba(4,14,9,0) 14%, rgba(4,14,9,0) 86%, rgba(4,14,9,0.9) 100%),
+      linear-gradient(90deg, rgba(4,14,9,0.9) 0%, rgba(4,14,9,0) 13%, rgba(4,14,9,0) 87%, rgba(4,14,9,0.9) 100%),
       linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.05) 34%, rgba(0,0,0,0.35) 100%); }
   .prizm-streak { position:absolute; inset:0;
     background:linear-gradient(115deg, transparent 33%, rgba(126,249,255,0.08) 47%, rgba(167,139,250,0.1) 50%, rgba(244,114,182,0.08) 53%, transparent 67%);
@@ -81,66 +54,79 @@
 
   /* ===== GOLD FRAME ===== */
   .frame { position:absolute; inset:44px; border:3px solid;
-    border-image:linear-gradient(135deg,#f4e2a6,#d9b64e,#b8892e,#e7c96b) 1; pointer-events:none; }
-  .frame-inner { position:absolute; inset:60px; border:1px solid rgba(231,201,107,0.45); pointer-events:none; }
+    border-image:linear-gradient(135deg,#f4e2a6,#d9b64e,#b8892e,#e7c96b) 1; pointer-events:none; z-index:5; }
+  .frame-inner { position:absolute; inset:60px; border:1px solid rgba(231,201,107,0.45); pointer-events:none; z-index:5; }
 
-  /* ===== CONTENT ===== */
+  /* ===== CONTENT (single vertical flow) ===== */
   .content { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center;
-    justify-content:space-between; padding:140px 0 130px; }
+    justify-content:flex-start; padding:150px 0 110px; z-index:3; }
 
-  /* EPL logo — SMALL and blended into the background (no bright disc), low opacity */
-  .epl-wrap { width:170px; height:95px; display:flex; align-items:center; justify-content:center; }
-  .epl-wrap img { max-width:100%; max-height:100%; opacity:0.4;
-    filter:brightness(1.45) saturate(0.85) drop-shadow(0 2px 6px rgba(0,0,0,0.5)); }
-
-  .mid { display:flex; flex-direction:column; align-items:center; }
+  /* EPL logo — crisp on a soft light disc */
+  .epl-wrap { width:220px; height:124px; display:flex; align-items:center; justify-content:center; position:relative; }
+  .epl-wrap::before { content:""; position:absolute; width:240px; height:128px;
+    background:radial-gradient(ellipse at center, rgba(244,233,207,0.9), rgba(244,233,207,0.6) 46%, transparent 72%);
+    border-radius:50%; }
+  .epl-wrap img { max-width:92%; max-height:92%; position:relative;
+    filter:contrast(1.1) drop-shadow(0 2px 6px rgba(0,0,0,0.35)); }
 
   .wordmark {
-    margin-top:0;
-    font-family:Georgia,'Times New Roman',serif; font-weight:bold; font-size:140px; line-height:1; letter-spacing:4px;
+    margin-top:60px;
+    font-family:Georgia,'Times New Roman',serif; font-weight:bold; font-size:104px; line-height:1; letter-spacing:3px;
     background:linear-gradient(135deg,#f9edb8,#d9b64e 40%,#b8892e 66%,#f0d987);
     -webkit-background-clip:text; background-clip:text; color:transparent;
     text-shadow:0 4px 20px rgba(0,0,0,0.55);
   }
-  .rule { display:flex; align-items:center; gap:16px; margin-top:10px; }
-  .rule .line { width:190px; height:2px; background:linear-gradient(90deg,transparent,#d9b64e,transparent); }
-  .rule .dot { width:13px; height:13px; transform:rotate(45deg); background:#d9b64e; }
-  .sub { margin-top:14px; color:#f4e9cf; font-size:36px; letter-spacing:18px; font-weight:600; text-shadow:0 2px 8px #000; }
+  .rule { display:flex; align-items:center; gap:16px; margin-top:8px; }
+  .rule .line { width:150px; height:2px; background:linear-gradient(90deg,transparent,#d9b64e,transparent); }
+  .rule .dot { width:12px; height:12px; transform:rotate(45deg); background:#d9b64e; }
+  .sub { margin-top:10px; color:#f4e9cf; font-size:30px; letter-spacing:15px; font-weight:600; text-shadow:0 2px 8px #000; }
 
-  /* Tottenham logo on a soft light disc (keep this crisp — it's the dealer's club) */
-  .spurs-wrap { margin-top:20px; width:200px; height:215px; display:flex; align-items:center; justify-content:center; position:relative; }
-  .spurs-wrap::before { content:""; position:absolute; width:200px; height:220px;
+  /* club + prizm logo row */
+  .logo-row { display:flex; align-items:center; justify-content:center; gap:40px; margin-top:30px; }
+  .spurs-wrap { width:150px; height:165px; display:flex; align-items:center; justify-content:center; position:relative; }
+  .spurs-wrap::before { content:""; position:absolute; width:155px; height:170px;
     background:radial-gradient(ellipse at center, rgba(244,233,207,0.88), rgba(244,233,207,0.6) 42%, transparent 70%);
     border-radius:50%; }
-  .spurs-wrap img { max-width:76%; max-height:92%; position:relative;
+  .spurs-wrap img { max-width:74%; max-height:90%; position:relative;
     filter:contrast(1.08) drop-shadow(0 2px 6px rgba(0,0,0,0.35)); }
 
-  .bottom { display:flex; flex-direction:column; align-items:center; }
-  .chips { display:flex; gap:22px; }
-  .chip { border:2px solid #d9b64e; border-radius:44px; padding:16px 34px;
-    color:#f4e9cf; font-size:28px; font-weight:600; letter-spacing:3px; background:rgba(6,20,14,0.4); text-shadow:0 1px 4px #000; }
-  .chip b { color:#e7c96b; }
+  /* PRIZM real logo — wide light pill so the chrome badge clearly reads */
+  .prizm-big { display:flex; align-items:center; justify-content:center;
+    height:92px; width:300px; border-radius:18px;
+    background:linear-gradient(180deg, #fcf9f2, #e4ded0);
+    border:3px solid #d9b64e; box-shadow:0 6px 18px rgba(0,0,0,0.5); }
+  .prizm-big img { width:86%; filter:contrast(1.2) saturate(1.05) drop-shadow(0 1px 2px rgba(0,0,0,0.3)); }
 
-  .tagline { margin-top:28px; color:#e7c96b; font-size:26px; letter-spacing:8px; font-weight:400; text-shadow:0 2px 8px #000; }
+  /* vintage cards displayed like a collection */
+  .vcards { display:flex; justify-content:center; align-items:center; margin-top:44px; position:relative; }
+  .vcards::after { content:""; position:absolute; inset:-30px;
+    background:radial-gradient(60% 95% at 50% 50%, rgba(217,182,78,0.16), transparent 70%); z-index:-1; }
+  .vcard { border:4px solid #efe3c6; border-radius:4px;
+    box-shadow:0 12px 32px rgba(0,0,0,0.75), 0 0 0 1px #9c7326;
+    filter:sepia(0.3) contrast(1.06) brightness(1.05);
+    background-repeat:no-repeat; }
+  .vcard.match { width:290px; height:190px; transform:rotate(-5deg) translateX(34px); z-index:1;
+    background-image:url('1656900916111.jpg'); background-size:204% auto; background-position:44% 40%; }
+  .vcard.portrait { width:150px; height:240px; transform:rotate(5deg) translateX(-34px); z-index:2;
+    background-image:url('1656900919275.jpg'); background-size:178% auto; background-position:50% 47%; }
+
+  /* chips + tagline pinned to bottom */
+  .bottom { position:absolute; left:0; right:0; bottom:96px; display:flex; flex-direction:column; align-items:center; z-index:3; }
+  .chips { display:flex; gap:22px; align-items:center; }
+  .chip { border:2px solid #d9b64e; border-radius:44px; padding:14px 34px;
+    color:#f4e9cf; font-size:27px; font-weight:600; letter-spacing:3px; background:rgba(6,20,14,0.55); text-shadow:0 1px 4px #000; }
+  .tagline { margin-top:22px; color:#e7c96b; font-size:26px; letter-spacing:8px; font-weight:400; text-shadow:0 2px 8px #000; }
 </style>
 </head>
 <body>
 <div id="card">
-  <!-- all three real cards blended -->
   <div class="bg bg-prizm"></div>
   <div class="bg bg-match"></div>
-  <div class="bg bg-portrait"></div>
 
   <div class="tone-green"></div>
   <div class="tone-dark"></div>
   <div class="prizm-streak"></div>
   <div class="top-bar"></div>
-
-  <!-- crisp vintage cards displayed like a collection -->
-  <div class="vcards">
-    <div class="vcard portrait"></div>
-    <div class="vcard match"></div>
-  </div>
 
   <div class="frame"></div>
   <div class="frame-inner"></div>
@@ -148,21 +134,27 @@
   <div class="content">
     <div class="epl-wrap"><img src="epl_logo.png" alt="EPL"></div>
 
-    <div class="mid">
-      <div class="wordmark">VINTAGE</div>
-      <div class="rule"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
-      <div class="sub">SPORTS CARDS</div>
+    <div class="wordmark">VINTAGE</div>
+    <div class="rule"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
+    <div class="sub">SPORTS CARDS</div>
+
+    <div class="logo-row">
       <div class="spurs-wrap"><img src="spurs_logo.png" alt="Tottenham"></div>
+      <div class="prizm-big"><img src="prizm_logo.png" alt="PANINI PRIZM"></div>
     </div>
 
-    <div class="bottom">
-      <div class="chips">
-        <div class="chip">EPL</div>
-        <div class="chip">PANINI <b>PRIZM</b></div>
-        <div class="chip">VINTAGE</div>
-      </div>
-      <div class="tagline">VINTAGE · PRIZM · TOBACCO CARDS</div>
+    <div class="vcards">
+      <div class="vcard portrait"></div>
+      <div class="vcard match"></div>
     </div>
+  </div>
+
+  <div class="bottom">
+    <div class="chips">
+      <div class="chip">EPL</div>
+      <div class="chip">VINTAGE</div>
+    </div>
+    <div class="tagline">VINTAGE · PRIZM · TOBACCO CARDS</div>
   </div>
 </div>
 </body>
